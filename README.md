@@ -73,3 +73,13 @@ Minikube IP: minikube ip consistently returned 192.168.49.2.
 The DVWA application requires a MySQL database and the PHP-based web application. Kubernetes YAML manifests were prepared and applied to deploy these components:
 
 dvwa-namespace.yaml: Defines a dedicated Kubernetes namespace (dvwa) for better isolation.
+
+
+
+##dvwa-namespace.yaml: Defines a dedicated Kubernetes namespace (dvwa) for better isolation.
+'''
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: dvwa 
+              '''

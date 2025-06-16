@@ -77,9 +77,13 @@ dvwa-namespace.yaml: Defines a dedicated Kubernetes namespace (dvwa) for better 
 
 
 ##dvwa-namespace.yaml: Defines a dedicated Kubernetes namespace (dvwa) for better isolation.
+
 '''
 apiVersion: v1
+
 kind: Namespace
+
 metadata:
+
   name: dvwa 
               '''

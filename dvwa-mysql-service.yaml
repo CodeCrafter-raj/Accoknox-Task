@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: dvwa-mysql
+  namespace: dvwa
+  labels:
+    app: dvwa
+    tier: database
+spec:
+  selector:
+    app: dvwa
+    tier: database
+  ports:
+  - protocol: TCP
+    port: 3306 # The service's port
+    targetPort: 3306 # The container's port
+  type: ClusterIP # Only accessible within the cluster

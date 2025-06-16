@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dvwa-mysql
+  namespace: dvwa
+  labels:
+    app: dvwa
+    tier: database
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dvwa
+      tier: database
+  template:
+    metadata:
+      labels:
+        app: dvwa
+        tier: database
+    spec:
+      containers:
+      - name: mysql
+        image: mariadb:10.5 # Using MariaDB, a common choice compatible with MySQL
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: dvwa-mysql-secret
+              key: MYSQL_ROOT_PASSWORD
+        - name: MYSQL_DATABASE
+          valueFrom:
+            secretKeyRef:
+              name: dvwa-mysql-secret
+              key: MYSQL_DATABASE
+        - name: MYSQL_USER
+          valueFrom:
+            secretKeyRef:
+              name: dvwa-mysql-secret
+              key: MYSQL_USER
+        - name: MYSQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: dvwa-mysql-secret
+              key: MYSQL_PASSWORD
+        ports:
+        - containerPort: 3306
+          name: mysql
